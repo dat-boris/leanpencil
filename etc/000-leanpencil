@@ -1,0 +1,31 @@
+# already in httpd.conf
+#Listen 80
+#NameVirtualHost *:80
+<VirtualHost *:80>
+	ServerName leanpencil.com
+	DocumentRoot /var/www/leanpencil
+	PerlOptions +Parent
+	PerlSetVar  MasonCompRoot  /var/www/leanpencil
+	PerlSetVar  MasonDataDir   /var/mason/leanpencil
+	AddType application/json .json
+
+	<Perl>
+	use lib '/var/www/leanpencil/lib'
+	</Perl>
+	#DirectoryIndex index.html
+	#RewriteEngine On
+	#RewriteRule "^/$" /index.html
+	<Location /js>
+	    SetHandler default-handler
+	</Location>
+	<Location /lib>
+	    #SetHandler default-handler
+	    order deny,allow
+	    deny from all
+	</Location>
+	<Location /etc>
+	    #SetHandler default-handler
+	    order deny,allow
+	    deny from all
+	</Location>
+</VirtualHost>
