@@ -1,3 +1,8 @@
+<!-- 
+<%args>
+    $username => 'you'
+</%args>
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -85,19 +90,20 @@ box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
 
 <body>
 <div id="register-container" class="container"> 
-<h3>Sign Up </h3>
+<h3> Welcome to LeanPencil.com </h3>
 <div class="inside">
 	<div class="content">
-	  <form name="form1" method="post" action="main.html">
-<label for="username">Email</label>
-	    <input type="text" name="username" id="username" class="textfield" required>
-        <label for="username">Password</label>
-        <input type="password" name="password" id="password" class="textfield" required>
-        <label for="username">Confirmed Password</label>
-         <input type="password" name="confirm_password" id="confirm_password" class="textfield" required>
-         
-         <input type="image" src="images/sign-up-btn.png" />
-      </form>
+        <h4>Your current credits</h4>
+        Account balance for <% $username %> is 10 credits
+
+        <h4>What can you do with it?</h4>
+
+        <ol>
+            <li>Install our <a href="/wp-plugins/leanpencil.zip">wordpress plugin</a> for a demo.  For a demo, create a test blog post <a href="http://wordpress.leanpencil.com/">Here</a>!</li>
+            <li>Email to <a href="mailto:ask@leanpencil.com">ask@leanpencil.com</a> to ask for title advice!</li>
+        </ol>
+
+        <h4>Price Plan</h4>
 	</div>
 	</div>
  </div>
