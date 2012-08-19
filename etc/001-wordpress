@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+	ServerName wordpress.leanpencil.com
+	DocumentRoot /var/www/wordpress.leanpencil.com
+    Alias /blog /var/www/wordpress.leanpencil.com
+    <Directory /var/www/wordpress.leanpencil.com>
+    Options FollowSymLinks
+    AllowOverride Limit Options FileInfo
+    DirectoryIndex index.php
+    </Directory>
+</VirtualHost>
