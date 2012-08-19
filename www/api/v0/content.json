@@ -1,8 +1,60 @@
 <%args>
-    $title
-    $content
+    $data
+    $email => 'boris.w.lau@gmail.com'
     $jsoncallback => undef
 </%args>
+<%once>
+use Email::Sender::Simple qw(sendmail);
+use Email::Simple;
+use Email::Simple::Creator;
+use Data::Dump qw(dump);
+use JSON qw(from_json);
+</%once>
+<%init>
+my $dataperl = from_json($data);
+{
+$dataperl->{email} = $email;
+my $subject = $dataperl->{post_title} || "(no subject)";
+
+my $email = Email::Simple->create(
+header => [
+  To      => 'boris.w.lau@gmail.com',
+  From    => 'boris@leanpencil.com',
+  Subject => "Thank you for using leanpencil.com",
+],
+body => <<"BODY"
+
+Your post $subject is now being process.
+
+Expect a 24 hours return time.
+
+Yours sincerely,
+leanpencil.com 
+
+BODY
+);
+
+sendmail($email);
+
+my $datatidy = dump($dataperl);
+my $email2 = Email::Simple->create(
+header => [
+  To      => 'boris.w.lau@gmail.com',
+  From    => 'boris@leanpencil.com',
+  Subject => "leanpencil - do some work!",
+],
+body => <<"BODY"
+
+Someone send in some work for for you to do!
+
+$datatidy
+
+BODY
+);
+
+sendmail($email2);
+}
+</%init>
 <& /api/jsoncallback.mas, 
         jsoncallback => $jsoncallback,  
-        data => { title => $title, content => $content } &>
+        data => { data => $dataperl } &>
