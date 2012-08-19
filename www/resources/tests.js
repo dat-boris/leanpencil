@@ -1,9 +1,9 @@
 asyncTest( "hello test", function() {
     $playdoh.leanpencil.login('testuser','password',
         function () {
-            $.leanpencil.createContent({
+            $playdoh.leanpencil.createContent({
                 'title': 'test title',
-                'paragraph' : 'leanpencil is lean!',
+                'content' : 'leanpencil is lean!',
             },
             function () {
                 start();

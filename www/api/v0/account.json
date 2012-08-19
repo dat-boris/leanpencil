@@ -1,7 +1,7 @@
 <%args>
     $username
+    $jsoncallback => undef
 </%args>
-{
-    'username' : 'test',
-    'credit' : 10
-}
+<& /api/jsoncallback.mas, 
+        jsoncallback => $jsoncallback,  
+        data => { username => test, credit => 10 } &>

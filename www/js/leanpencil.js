@@ -7,10 +7,11 @@
         login: function (username, psw, callback) {
             //TODO: getJSON call setting 3rd party cookie
             $.getJSON(
-                "http://api.leanpencil.com/api/v0/login.json",
+                "http://api.leanpencil.com/api/v0/login.json?jsoncallback=?",
                 { 'username': username,
                   'psw' : psw,
-                }
+                },
+                callback
             );
         },
 
@@ -19,7 +20,7 @@
          */
         createContent : function (data, callback) {
             $.getJSON(
-                "http://api.leanpencil.com/api/v0/content",
+                "http://api.leanpencil.com/api/v0/content.json?jsoncallback=?",
                 data,
                 callback
             );
@@ -30,7 +31,7 @@
          */
         getCredit : function (callback) {
             $.getJSON(
-                "http://api.leanpencil.com/api/v0/content",
+                "http://api.leanpencil.com/api/v0/account.json??jsoncallback=?",
                 data,
                 callback
             );

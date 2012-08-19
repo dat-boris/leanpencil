@@ -17,13 +17,6 @@
 		PerlHandler  HTML::Mason::ApacheHandler
 		# 3 days revalidation
 		Header set Cache-Control "max-age=259200, no-cache"
-
-        # access control for password
-        AuthType Basic
-        AuthName "data.ockamo access"
-        AuthUserFile /var/www/data.ockamo/etc/authpsw
-        Require user ockamo
-
 	</LocationMatch>
 	#DirectoryIndex index.html
 	#RewriteEngine On

@@ -1,8 +1,8 @@
 <%args>
-    $title => undef
-    $content => undef
+    $title
+    $content
+    $jsoncallback => undef
 </%args>
-{ 
-    title : <% $title %>,
-    content : <% $content %>
-}
+<& /api/jsoncallback.mas, 
+        jsoncallback => $jsoncallback,  
+        data => { title => $title, content => $content } &>
