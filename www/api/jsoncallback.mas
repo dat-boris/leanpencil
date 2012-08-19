@@ -1,0 +1,13 @@
+<%args>
+        $jsoncallback => undef
+        $str => undef
+        $data => undef
+</%args>
+<%once>
+        use JSON qw(to_json);
+</%once>
+<%init>
+        $r->content_type("application/json");
+        $str = to_json($data) if not $str;
+</%init>
+<% ($jsoncallback ? "$jsoncallback($str)" : $str) %>

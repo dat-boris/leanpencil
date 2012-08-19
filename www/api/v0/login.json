@@ -1,5 +1,8 @@
 <%args>
     $username
     $psw
+    $jsoncallback => undef
 </%args>
-{ 'success' : 1 }
+<& /api/jsoncallback.mas, 
+        jsoncallback => $jsoncallback,  
+        data => { success => 1 } &>

@@ -11,7 +11,7 @@
                 { 'username': username,
                   'psw' : psw,
                 }
-            ),
+            );
         },
 
         /**
@@ -37,4 +37,4 @@
         }
     };
 
-})(jQuery)
+})($playdoh)
