@@ -21,6 +21,9 @@
 	#DirectoryIndex index.html
 	#RewriteEngine On
 	#RewriteRule "^/$" /index.html
+	<Location /images>
+	    SetHandler default-handler
+	</Location>
 	<Location /js>
 	    SetHandler default-handler
 	</Location>
