@@ -82,7 +82,9 @@ a {
   width:90%;
  -webkit-box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
 box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
+}
 
-
- 
+.main-container {
+	margin: 0 auto; 
+	width: 1000px;	
 }
