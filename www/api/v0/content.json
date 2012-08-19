@@ -14,7 +14,7 @@ my $dataperl = from_json($data);
 my $email = $m->comp('/api/user.mas') or die "Not logged in!";
 {
 $dataperl->{email} = $email;
-my $subject = $dataperl->{post_title} || "(no subject)";
+my $subject = $dataperl->{title} || "(no subject)";
 
 my $email1 = Email::Simple->create(
 header => [
