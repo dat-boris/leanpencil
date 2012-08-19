@@ -109,7 +109,10 @@ if ( is_admin() ){
                 vertical-align: baseline;
                 margin-right: 5px;
             }
-			
+			#lp-option-table .col1 {
+				display:inline-block;
+				width: 200px;	
+			}
 			.info, .success, .warning, .error {
 			border: 1px solid;
 			margin: 10px 0px;
@@ -135,59 +138,69 @@ if ( is_admin() ){
 				display: none;	
 			}
             </style>
-<div class="success hidden">Your order has been processed.</div>
+<div id="success-send" class="success hidden">Order confirmed - confirmation sent to Email!</div>
 <div class="error hidden">Error processing your order. Please try again later.</div>
             
             <table id="lp-option-table">
                         <tbody>
-                        
-                        <tr>
+                    <tr>
                         <th scope="row">Options</th>
-                        <td><ul id="lp-credit-list" class="lp-list"><li><label>
-                            <input type="checkbox" name="lp_credits" value="Title" data-credit="5" id="options_0">
-                            Title (5 credits)</label>
+                        <td><ul id="lp-credit-list" class="lp-list">
+                         <li>
+                           <label>
+                            <input type="checkbox" name="lp_credits" value="Proofreading" data-credit="5" id="options_0" checked>
+                            Proofreading and grammar</label>
+                          </li>
+                           
+                        <li>
+                          <label>
+                            <input type="checkbox" name="lp_credits" value="SEO" data-credit="5" id="options_1" checked>
+                            SEO description </label>
+                          </li>
+                          
+                        <li><label>
+                            <input type="checkbox" name="lp_credits" value="Title" data-credit="5" id="options_2" checked>
+                            Title </label>
                     </li>
                     <li>
                           <label>
-                            <input type="checkbox" name="lp_credits" value="Images" data-credit="5" id="options_1">
-                            Images (5 credits)</label>
+                            <input type="checkbox" name="lp_credits" value="Images" data-credit="5" id="options_3" checked>
+                            Image </label>
                         </li>
-                        
-                        <li>
+                             <li>
                           <label>
-                            <input type="checkbox" name="lp_credits" value="SEO" data-credit="5" id="options_2">
-                            SEO description (5 credits)</label>
+                            <input type="checkbox" name="lp_credits" value="Tweet" data-credit="1" id="options_4" checked>
+                            Tweet</label>
                           </li>
                           
-                          <li>
+                               <li>
                           <label>
-                            <input type="checkbox" name="lp_credits" value="Tweet" data-credit="1" id="options_3">
-                            Tweet (1 credit)</label>
+                            <input type="checkbox" name="lp_credits" value="Tweet" data-credit="1" id="options_5" checked>
+                            LinkedIn share</label>
                           </li>
+                               <li>
+                          <label>
+                            <input type="checkbox" name="lp_credits" value="Tweet" data-credit="1" id="options_6" checked>
+                            Facebook share</label>
+                          </li>
+                       
+                          
+                     
                              <li>
                            <label>
-                            <input type="checkbox" name="lp_credits" value="Facebook" data-credit="1" id="options_4">
-                            Facebook (1 credit)</label>
+                            <input type="checkbox" name="lp_credits" value="Pinterest" data-credit="1" id="options_7" checked>
+                            Pinterest share</label>
                           </li>
-                             <li>
-                           <label>
-                            <input type="checkbox" name="lp_credits" value="Pinterest" data-credit="1" id="options_5">
-                            Pinterest (1 credit)</label>
-                          </li>
-                          <li>
-                           <label>
-                            <input type="checkbox" name="lp_credits" value="Proofreading" data-credit="5" id="options_6">
-                            Proofreading and grammar (5 credit)</label>
-                          </li>
+                         
                           
                           </ul></td>
-                        </tr>
+                        </tr> 
             
-                        <tr>
+                       <!-- <tr>
                         <th scope="row">Images</th>
                         <td><input type="text" value="" name="img" size="62">		</td>
                         </tr>
-            
+            -->
                         <tr>
                         <th scope="row">SEO Description</th>
                         <td>
@@ -195,14 +208,14 @@ if ( is_admin() ){
                         </td>
                         </tr>
                 
-                            <tr>
+                       <!--     <tr>
                         <th scope="row">
                         Total			</th>
                         <td>
                         <span id="num_credits">0</span> credits
                  
                         </td>
-                        </tr>
+                        </tr> -->
                         
                             <tr>
                         <th scope="row">
@@ -260,7 +273,9 @@ if ( is_admin() ){
             "http://api.leanpencil.com/api/v0/content.json?jsoncallback=?",
             { data : JSON.stringify(postData) },
             function () {
-                alert("Order confirmed - confirmation sent to Email!");
+                // alert("Order confirmed - confirmation sent to Email!");
+				$("#success-send").show(2000);
+				
             }
         );
         return 0;
@@ -275,7 +290,7 @@ if ( is_admin() ){
         <?php
 
     }
-	add_action('lp_print_scripts', 'lean_pencil_javascript');
+	/*add_action('lp_print_scripts', 'lean_pencil_javascript');
 	function lean_pencil_javascript() {
 		
 	 
@@ -283,7 +298,7 @@ if ( is_admin() ){
 		  wp_enqueue_script('lean_pencil_script', LEANPENCIL_PLUGIN_JS_URL.'/js/script.js');	  
 		  echo "TEST" . LEANPENCIL_PLUGIN_JS_URL;
 		
-	}
+	}*/
 
 	
 }
