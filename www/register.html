@@ -109,9 +109,10 @@ box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
                     { 'username': $("#username").val() },
                     function () {
                         location.href="main.html";
+                        return false;
                     }
                 );
-                return 0;
+                return false;
             });
          </script>
       </form>
