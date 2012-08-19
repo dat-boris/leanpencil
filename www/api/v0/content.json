@@ -16,7 +16,7 @@ my $email = $m->comp('/api/user.mas') or die "Not logged in!";
 $dataperl->{email} = $email;
 my $subject = $dataperl->{post_title} || "(no subject)";
 
-my $email = Email::Simple->create(
+my $email1 = Email::Simple->create(
 header => [
   To      => $email,
   From    => 'boris@leanpencil.com',
@@ -34,7 +34,7 @@ leanpencil.com
 BODY
 );
 
-sendmail($email);
+sendmail($email1);
 
 my $datatidy = dump($dataperl);
 my $email2 = Email::Simple->create(
