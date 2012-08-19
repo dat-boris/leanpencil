@@ -106,7 +106,7 @@ box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
             $("#form1").submit(function () {
                 $.getJSON(
                     "http://api.leanpencil.com/api/v0/login.json?jsoncallback=?",
-                    { 'username': username },
+                    { 'username': $("#username").val() },
                     function () {
                         location.href="main.html";
                     }
