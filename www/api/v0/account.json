@@ -1,0 +1,7 @@
+<%args>
+    $username
+</%args>
+{
+    'username' : 'test',
+    'credit' : 10
+}

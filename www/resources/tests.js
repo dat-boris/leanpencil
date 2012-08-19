@@ -1,3 +1,10 @@
 test( "hello test", function() {
-  ok( 1 == "1", "Passed!" );
+    $.leanpencil.login('testuser','password',
+        function () {
+            $.leanpencil.createContent({
+                'title': 'test title',
+                'paragraph' : 'leanpencil is lean!'
+            });
+        }
+    );
 });

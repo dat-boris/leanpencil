@@ -1,0 +1,8 @@
+<%args>
+    $title => undef
+    $content => undef
+</%args>
+{ 
+    title : <% $title %>,
+    content : <% $content %>
+}
