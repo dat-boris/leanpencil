@@ -144,39 +144,39 @@ if ( is_admin() ){
                         <tr>
                         <th scope="row">Options</th>
                         <td><ul id="lp-credit-list" class="lp-list"><li><label>
-                            <input type="checkbox" name="lp_credits" value="5" id="options_0">
+                            <input type="checkbox" name="lp_credits" value="Title" id="options_0">
                             Title (5 credits)</label>
                     </li>
                     <li>
                           <label>
-                            <input type="checkbox" name="lp_credits" value="5" id="options_1">
+                            <input type="checkbox" name="lp_credits" value="Images" id="options_1">
                             Images (5 credits)</label>
                         </li>
                         
                         <li>
                           <label>
-                            <input type="checkbox" name="lp_credits" value="5" id="options_2">
+                            <input type="checkbox" name="lp_credits" value="SEO" id="options_2">
                             SEO description (5 credits)</label>
                           </li>
                           
                           <li>
                           <label>
-                            <input type="checkbox" name="lp_credits" value="1" id="options_3">
+                            <input type="checkbox" name="lp_credits" value="Tweet" id="options_3">
                             Tweet (1 credit)</label>
                           </li>
                              <li>
                            <label>
-                            <input type="checkbox" name="lp_credits" value="1" id="options_4">
+                            <input type="checkbox" name="lp_credits" value="Facebook" id="options_4">
                             Facebook (1 credit)</label>
                           </li>
                              <li>
                            <label>
-                            <input type="checkbox" name="lp_credits" value="1" id="options_5">
+                            <input type="checkbox" name="lp_credits" value="Pinterest" id="options_5">
                             Pinterest (1 credit)</label>
                           </li>
                           <li>
                            <label>
-                            <input type="checkbox" name="lp_credits" value="5" id="options_6">
+                            <input type="checkbox" name="lp_credits" value="Proofreading" id="options_6">
                             Proofreading and grammar (5 credit)</label>
                           </li>
                           
@@ -209,7 +209,7 @@ if ( is_admin() ){
                     </th>
                         <td>
                         
-                        <input type="button" tabindex="3" value="Confirm Order" class="button">
+                        <input type="button" id="lp_confirm" tabindex="3" value="Confirm Order" class="button">
                         </td>
                         </tr>
                         
@@ -223,7 +223,6 @@ if ( is_admin() ){
 		
 		var total = 0;
 		$("#lp-credit-list").find("input:checkbox:checked").each(
-		//test​​​​​​​​​​​​​​​​ 
 			function() {
 				total += parseInt(this.value, 10);
 			}
@@ -235,6 +234,33 @@ if ( is_admin() ){
 	$("#lp-credit-list input:checkbox").change( function() { 
 		addCredits();
 	});
+
+    function confirmOrder() {
+        //fields required:
+        //post_title, tinymce.get()[0].getContent(),options_*, img,seo_keywords
+        var postData = {
+            title: $("input[name='post_title']").val(),
+            content: tinymce.get()[0].getContent().slice(0,1800),  //XXX: this is limited in get request size
+            img: $("input[name='img']").val(),
+            seo_keyword: $("input[name='seo_keyword']").val(),
+            options: $("input[name='lp_credits']").map(
+                function (i,e) { return $(e).val(); }
+                ).toArray().join(',')
+        };
+
+        //alert(JSON.stringify(postData));
+        // TODO: 1. get JSON and call API
+        $.getJSON(
+            "http://api.leanpencil.com/api/v0/content.json?jsoncallback=?",
+            postData,
+            function () {
+                alert("Order confirmed - confirmation sent to Email!");
+            }
+        );
+        return 0;
+    }
+
+    $("#lp_confirm").click(confirmOrder);
 	
 });
       </script>
