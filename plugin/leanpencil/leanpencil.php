@@ -269,15 +269,32 @@ if ( is_admin() ){
 
         //alert(JSON.stringify(postData));
         // TODO: 1. get JSON and call API
+        /*
         $.getJSON(
             "http://api.leanpencil.com/api/v0/content.json?jsoncallback=?",
             { data : JSON.stringify(postData) },
             function () {
                 // alert("Order confirmed - confirmation sent to Email!");
+                debugger;
 				$("#success-send").show(2000);
 				
             }
         );
+        */
+        $.ajax({
+            url: "http://api.leanpencil.com/api/v0/content.json?jsoncallback=?",
+            dataType: 'json',
+            data: { data : JSON.stringify(postData) },
+            success: function () {
+                // alert("Order confirmed - confirmation sent to Email!");
+				$("#success-send").show(2000);
+				
+            },
+            error: function () {
+                alert("Error - please check your browser to allow login cookies access.");
+            }
+        });
+
         return 0;
     }
 
