@@ -99,7 +99,7 @@ ul li {
   border-width:1px;
   color:#666;
   font-size:14px;
-  height:24px;
+
   margin:0px 0 11px;
   overflow:hidden;
   padding:5px 10px;
@@ -108,25 +108,15 @@ ul li {
  -webkit-box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
 box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
 }
+.textfield-small {
+	  height:24px;
+}
 .textfield-big {
-  background-color:#fff;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
-  border-color:#dee4e7;
-  border-style:solid;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  border-width:1px;
-  color:#666;
-  font-size:14px;
-  height:200px;
-  margin:0px 0 11px;
-  overflow:hidden;
-  padding:5px 10px;
-  position:relative;
-  width:90%;
- -webkit-box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
-box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);	
+    height:200px;
+}
+
+.textfield-medium {
+height: 100px;
 }
 .main-container {
 	margin: 0 auto; 
