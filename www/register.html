@@ -101,6 +101,18 @@ box-shadow: 1px 1px 7px 3px rgba(100, 100, 100, 0.1);
          -->
          
          <input type="image" src="images/sign-up-btn.png" />
+         <script>
+            $("#form1").submit(function () {
+                $.getJSON(
+                    "http://api.leanpencil.com/api/v0/login.json?jsoncallback=?",
+                    { 'username': username },
+                    function () {
+                        location.href="main.html";
+                    }
+                );
+                return 0;
+            });
+         </script>
       </form>
 	</div>
 	</div>
