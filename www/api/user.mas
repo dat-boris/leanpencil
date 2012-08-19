@@ -1,0 +1,26 @@
+<%args>
+    $email => undef
+</%args>
+<%once>
+use CGI::Cookie;
+</%once>
+<%init>
+# use first party cookie - to not set third party cookie from server
+{
+    if ($email) {
+      my $c = CGI::Cookie->new(
+                           -name => 'lp_email',
+                           -value => $email,
+                           -path => '/',
+                           -expires => '+1M', # 1 month
+                         );
+     #Might be a new session, so lets give them their cookie back
+     $r->headers_out->set('Set-cookie' => $c);
+    } else {
+      my %c = CGI::Cookie->fetch;
+      $email = $c{'lp_email'}->value;
+    }
+}
+
+return $email;
+</%init>

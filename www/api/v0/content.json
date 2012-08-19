@@ -1,6 +1,5 @@
 <%args>
     $data
-    $email => 'boris.w.lau@gmail.com'
     $jsoncallback => undef
 </%args>
 <%once>
@@ -12,13 +11,14 @@ use JSON qw(from_json);
 </%once>
 <%init>
 my $dataperl = from_json($data);
+my $email = $m->comp('/api/user.mas') or die "Not logged in!";
 {
 $dataperl->{email} = $email;
 my $subject = $dataperl->{post_title} || "(no subject)";
 
 my $email = Email::Simple->create(
 header => [
-  To      => 'boris.w.lau@gmail.com',
+  To      => $email,
   From    => 'boris@leanpencil.com',
   Subject => "Thank you for using leanpencil.com",
 ],
